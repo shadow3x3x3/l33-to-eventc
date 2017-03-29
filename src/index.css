@@ -1,0 +1,28 @@
+body {
+  color: #666;
+}
+
+.header {
+  margin: 20px;
+  text-align: center;
+}
+
+.content {
+  margin: auto;
+  max-width: 768px;
+  width: 100%;
+}
+
+select {
+  padding-top: 4px !important;
+}
+
+
+/* fade */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+

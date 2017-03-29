@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>L33 to Event_c</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
+  <link rel="stylesheet" href="src/index.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!-- app div -->
+  <div id="app">
+    <!-- main -->
+    <div class="content">
+      <div class="header">
+        <h1>L33轉Event_C</h1>
+      </div>
+      <!-- Basic -->
+      <div class="columns">
+        <div class="column">
+          <label class="label">資料來源</label>
+          <p class="control">
+            <input v-model="source" class="input" type="text" placeholder="資料來源" maxlength="12">
+          </p>
+        </div>
+
+        <div class="column">
+          <label class="label">郵件類別</label>
+          <p class="control">
+            <span class="select">
+              <select v-model="type">
+                <option v-for="type in types" :value="type.value">
+                  {{ type.text }}
+                </option>
+              </select>
+            </span>
+          </p>
+        </div>
+
+        <div class="column">
+          <label class="label">格式</label>
+          <p class="control">
+            <span class="select">
+              <select v-model="format">
+                <option v-for="format in formats" :value="format.value">
+                  {{ format.text }}
+                </option>
+              </select>
+            </span>
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">年度</label>
+          <p class="control">
+            <input v-model="year" class="input" type="text" placeholder="年度" maxlength="12">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">國名代碼</label>
+          <p class="control">
+            <input v-model="countryCode" class="input" type="text" placeholder="國名代碼" maxlength="2">
+          </p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column field">
+          <label class="label">互換局名</label>
+          <p class="control">
+            <input v-model="foce" class="input" type="text" disabled>
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">總包號碼</label>
+          <p class="control">
+            <input v-model="packageCode" class="input" type="text" placeholder="總包號碼" maxlength="4">
+          </p>
+        </div>
+      </div>
+      <!-- Basic end -->
+
+      <!-- A -->
+      <div class="columns">
+        <div class="column field">
+          <label class="label">提單號碼</label>
+          <p class="control">
+            <input v-model="typeA['billCode']" class="input" type="text" placeholder="提單號碼" maxlength="12">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">去年最後總包</label>
+          <p class="control">
+            <input v-model="typeA['lastPackage']" class="input" type="text" placeholder="去年最後總包" maxlength="4">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">封發時間</label>
+          <p class="control">
+            <input v-model="typeA['mantleTime']" class="input" type="datetime" placeholder="封發時間">
+          </p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column field">
+          <label class="label">總件數</label>
+          <p class="control">
+            <input v-model="typeA['itemNum']" class="input" type="number" placeholder="總件數" min="0" maxlength="5">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">總頁數</label>
+          <p class="control">
+            <input v-model="typeA['pageNum']" class="input" type="number" placeholder="總件數" min="0" maxlength="3">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">總袋數</label>
+          <p class="control">
+            <input v-model="typeA['packageNum']" class="input" type="number" placeholder="總袋數" min="0" maxlength="3">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">總重量</label>
+          <p class="control">
+            <input v-model="typeA['totalWeight']" class="input" type="number" placeholder="總重量" min="0" step="0.1" maxlength="8">
+          </p>
+        </div>
+      </div>
+      <!-- A end -->
+
+      <!-- B -->
+      <div class="columns">
+        <div class="column field">
+          <label class="label">袋序</label>
+          <p class="control">
+            <input v-model="typeB['packageOrder']" class="input" type="number" placeholder="袋序" min="0" maxlength="3">
+          </p>
+        </div>
+
+        <div class="column">
+          <label class="label">是否為最後一袋</label>
+          <p class="control">
+            <span class="select">
+              <select v-model="typeB['isLastPackage']">
+                <option value="0">否</option>
+                <option value="0">是</option>
+              </select>
+            </span>
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">該袋頁數</label>
+          <p class="control">
+            <input v-model="typeB['packagePages']" class="input" type="number" placeholder="該袋頁數" min="0" maxlength="3">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">件數</label>
+          <p class="control">
+            <input v-model="typeB['itemNum']" class="input" type="number" placeholder="件數" min="0" maxlength="4">
+          </p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column field">
+          <label class="label">重量</label>
+          <p class="control">
+            <input v-model="typeB['weight']" class="input" type="number" placeholder="重量" min="0" step="0.1" maxlength="5">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">封發時間</label>
+          <p class="control">
+            <input v-model="typeB['mantleTime']" class="input" type="datetime" placeholder="封發時間">
+          </p>
+        </div>
+      </div>
+      <!-- B end -->
+
+      <!-- C -->
+      <div class="columns">
+        <div class="column field">
+          <label class="label">袋序</label>
+          <p class="control">
+            <input v-model="typeC['packageOrder']" class="input" type="number" placeholder="袋序" min="0" maxlength="3">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">頁序</label>
+          <p class="control">
+            <input v-model="typeC['pageOrder']" class="input" type="number" placeholder="頁序" min="0" maxlength="3">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">格次</label>
+          <p class="control">
+            <input v-model="typeC['blankNum']" class="input" type="number" placeholder="格次" min="0" maxlength="3">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">郵件號碼</label>
+          <p class="control">
+            <input v-model="typeC['mailCode']" class="input" type="text" placeholder="郵件號碼" maxlength="13">
+          </p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column field">
+          <label class="label">重量</label>
+          <p class="control">
+            <input v-model="typeC['weight']" class="input" type="number" placeholder="重量" min="0" step="0.01" maxlength="5">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">封發時間</label>
+          <p class="control">
+            <input v-model="typeC['mantleTime']" class="input" type="datetime" placeholder="封發時間">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">省別</label>
+          <p class="control">
+            <input v-model="typeC['province']" class="input" type="text" placeholder="省別" maxlength="2">
+          </p>
+        </div>
+
+        <div class="column field">
+          <label class="label">箱別</label>
+          <p class="control">
+            <span class="select">
+              <select v-model="typeC['box']">
+                <option value="1">自由包</option>
+                <option value="2">健康袋</option>
+                <option value="3">商旅包</option>
+              </select>
+            </span>
+          </p>
+        </div>
+
+      </div>
+      <!-- C end -->
+    </div>
+    <!-- main end -->
+  </div>
+  <!-- app div end -->
+  <script src="src/index.js"></script>
+</body>
+
+</html>
