@@ -55,7 +55,9 @@ var app = new Vue({
     }
   },
   methods: {
-
+    initType: function() {
+      this.format = '0'
+    }
   },
   computed: {
     preview: function() {

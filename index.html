@@ -31,7 +31,7 @@
           <p class="control">
             <span class="select">
               <select v-model="type">
-                <option v-for="type in types" :value="type.value">
+                <option v-for="type in types" :value="type.value" @click="initType()">
                   {{ type.text }}
                 </option>
               </select>
@@ -44,9 +44,9 @@
           <p class="control">
             <span class="select">
               <select v-model="format">
-                <option v-for="format in formats" :value="format.value">
-                  {{ format.text }}
-                </option>
+                <option value="1">總包資訊</option>
+                <option value="2">郵袋資訊</option>
+                <option value="3" v-if="type !== 3">郵件資訊</option>
               </select>
             </span>
           </p>
@@ -86,7 +86,7 @@
 
       <!-- A -->
       <transition name="fade">
-        <div class="type-a" v-if="format === 1">
+        <div class="type-a" v-if="format === '1'">
           <div class="columns">
             <div class="column field">
               <label class="label">提單號碼</label>
@@ -146,7 +146,7 @@
 
       <!-- B -->
       <transition name="fade">
-        <div class="type-b" v-if="format === 2">
+        <div class="type-b" v-if="format === '2'">
           <div class="columns">
             <div class="column field">
               <label class="label">袋序</label>
@@ -204,7 +204,7 @@
 
       <!-- C -->
       <transition name="fade">
-        <div class="type-c" v-if="format === 3 && type !== 3">
+        <div class="type-c" v-if="format === '3'">
           <div class="columns">
             <div class="column field">
               <label class="label">袋序</label>
