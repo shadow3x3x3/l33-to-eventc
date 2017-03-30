@@ -68,4 +68,3 @@ var app = new Vue({
     // materialize initialize
   }
 })
-

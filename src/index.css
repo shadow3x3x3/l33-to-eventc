@@ -17,6 +17,11 @@ select {
   padding-top: 4px !important;
 }
 
+.add-button {
+  margin: auto;
+  display: block;
+  width: 60%;
+}
 
 /* fade */
 .fade-enter-active {
