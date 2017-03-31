@@ -1,5 +1,3 @@
-// import Vue from 'vue'
-
 /* eslint-disable no-new */
 var app = new Vue({
   el: '#app',
@@ -10,7 +8,8 @@ var app = new Vue({
       { text: '掛號', value: 2 },
       { text: '平件M', value: 3 },
       { text: '速遞空運', value: 4 },
-      { text: '速遞海運', value: 5 }
+      { text: 'e-小包', value: 5 },
+      { text: '速遞海運', value: 6 }
     ],
     formats: [
       { text: '總包資訊', value: 1 },
@@ -20,7 +19,9 @@ var app = new Vue({
     packages: [],
     // single package info
     source: '',
-    type: '0',
+    id: '',
+    type: '',
+    mantleTime: '',
     format: '0',
     year: '',
     countryCode: '',
@@ -29,7 +30,6 @@ var app = new Vue({
     typeA: {
       billCode: '',
       lastPackage: '',
-      mantleTime: '',
       itemNum: '',
       pageNum: '',
       packageNum: '',
@@ -49,7 +49,6 @@ var app = new Vue({
       blankNum: '',
       mailCode: '',
       weight: '',
-      mantleTime: '',
       province: '',
       box: '1'
     }
@@ -60,11 +59,15 @@ var app = new Vue({
     }
   },
   computed: {
-    preview: function() {
-      return '123'
+    filename: function() {
+      return this.source + this.id + this.mantleTime + this.type
     }
   },
   mounted: function () {
-    // materialize initialize
+    flatpickr('.flatpickr', {
+      dateFormat: 'YmdHi',
+      enableTime: true,
+      time_24hr: true
+    })
   }
 })

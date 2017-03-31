@@ -22,13 +22,3 @@ select {
   display: block;
   width: 60%;
 }
-
-/* fade */
-.fade-enter-active {
-  transition: opacity .5s
-}
-
-.fade-enter, .fade-leave-active {
-  opacity: 0
-}
-

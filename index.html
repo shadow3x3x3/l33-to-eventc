@@ -6,6 +6,8 @@
   <title>L33 to Event_c</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
   <link rel="stylesheet" href="src/index.css">
+  <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+  <script src="https://unpkg.com/flatpickr"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 
@@ -17,19 +19,36 @@
       <div class="header">
         <h1>L33轉Event_C</h1>
       </div>
-      <!-- Basic -->
+      <!-- File info -->
+      <h3 class="title">基本資訊</h3><h6 class="subtitle">檔名預覽: {{ filename }}</h6>
       <div class="columns">
         <div class="column">
-          <label class="label">資料來源</label>
+          <label class="label">來源</label>
           <p class="control">
-            <input v-model="source" class="input" type="text" placeholder="資料來源" maxlength="12">
+            <span class="select is-fullwidth">
+              <select v-model="source">
+                <option value="PT">廠商</option>
+                <option value="LM">台北局</option>
+              </select>
+            </span>
           </p>
         </div>
-
+        <div class="column">
+          <label class="label">特約戶號</label>
+          <p class="control">
+            <input v-model="id" class="input" type="text" placeholder="特約戶號" maxlength="12">
+          </p>
+        </div>
+        <div class="column">
+          <label class="label">封發時間</label>
+          <p class="control">
+            <input v-model="mantleTime" class="input flatpickr" type="datetime" placeholder="封發時間">
+          </p>
+        </div>
         <div class="column">
           <label class="label">郵件類別</label>
           <p class="control">
-            <span class="select">
+            <span class="select is-fullwidth">
               <select v-model="type">
                 <option v-for="type in types" :value="type.value" @click="initType()">
                   {{ type.text }}
@@ -38,11 +57,15 @@
             </span>
           </p>
         </div>
+      </div>
+      <!-- File info End -->
 
+      <!-- Basic -->
+      <div class="columns">
         <div class="column">
           <label class="label">格式</label>
           <p class="control">
-            <span class="select">
+            <span class="select is-fullwidth">
               <select v-model="format">
                 <option value="1">總包資訊</option>
                 <option value="2">郵袋資訊</option>
@@ -85,193 +108,186 @@
       <!-- Basic end -->
 
       <!-- A -->
-      <transition name="fade">
-        <div class="type-a" v-if="format === '1'">
-          <div class="columns">
-            <div class="column field">
-              <label class="label">提單號碼</label>
-              <p class="control">
-                <input v-model="typeA['billCode']" class="input" type="text" placeholder="提單號碼" maxlength="12">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">去年最後總包</label>
-              <p class="control">
-                <input v-model="typeA['lastPackage']" class="input" type="text" placeholder="去年最後總包" maxlength="4">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">封發時間</label>
-              <p class="control">
-                <input v-model="typeA['mantleTime']" class="input" type="datetime" placeholder="封發時間">
-              </p>
-            </div>
+      <div class="type-a" v-if="format === '1'">
+        <div class="columns">
+          <div class="column field">
+            <label class="label">提單號碼</label>
+            <p class="control">
+              <input v-model="typeA['billCode']" class="input" type="text" placeholder="提單號碼" maxlength="12">
+            </p>
           </div>
 
-          <div class="columns">
-            <div class="column field">
-              <label class="label">總件數</label>
-              <p class="control">
-                <input v-model="typeA['itemNum']" class="input" type="number" placeholder="總件數" min="0" maxlength="5">
-              </p>
-            </div>
+          <div class="column field">
+            <label class="label">去年最後總包</label>
+            <p class="control">
+              <input v-model="typeA['lastPackage']" class="input" type="text" placeholder="去年最後總包" maxlength="4">
+            </p>
+          </div>
 
-            <div class="column field">
-              <label class="label">總頁數</label>
-              <p class="control">
-                <input v-model="typeA['pageNum']" class="input" type="number" placeholder="總件數" min="0" maxlength="3">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">總袋數</label>
-              <p class="control">
-                <input v-model="typeA['packageNum']" class="input" type="number" placeholder="總袋數" min="0" maxlength="3">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">總重量</label>
-              <p class="control">
-                <input v-model="typeA['totalWeight']" class="input" type="number" placeholder="總重量" min="0" step="0.1" maxlength="8">
-              </p>
-            </div>
+          <div class="column field">
+            <label class="label">封發時間</label>
+            <p class="control">
+              <input v-model="typeA['mantleTime']" class="input" type="datetime" placeholder="封發時間">
+            </p>
           </div>
         </div>
-      </transition>
+
+        <div class="columns">
+          <div class="column field">
+            <label class="label">總件數</label>
+            <p class="control">
+              <input v-model="typeA['itemNum']" class="input" type="number" placeholder="總件數" min="0" maxlength="5">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">總頁數</label>
+            <p class="control">
+              <input v-model="typeA['pageNum']" class="input" type="number" placeholder="總件數" min="0" maxlength="3">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">總袋數</label>
+            <p class="control">
+              <input v-model="typeA['packageNum']" class="input" type="number" placeholder="總袋數" min="0" maxlength="3">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">總重量</label>
+            <p class="control">
+              <input v-model="typeA['totalWeight']" class="input" type="number" placeholder="總重量" min="0" step="0.1" maxlength="8">
+            </p>
+          </div>
+        </div>
+      </div>
       <!-- A end -->
 
       <!-- B -->
-      <transition name="fade">
-        <div class="type-b" v-if="format === '2'">
-          <div class="columns">
-            <div class="column field">
-              <label class="label">袋序</label>
-              <p class="control">
-                <input v-model="typeB['packageOrder']" class="input" type="number" placeholder="袋序" min="0" maxlength="3">
-              </p>
-            </div>
-
-            <div class="column">
-              <label class="label">是否為最後一袋</label>
-              <p class="control">
-                <span class="select">
-                  <select v-model="typeB['isLastPackage']">
-                    <option value="0">否</option>
-                    <option value="0">是</option>
-                  </select>
-                </span>
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">該袋頁數</label>
-              <p class="control">
-                <input v-model="typeB['packagePages']" class="input" type="number" placeholder="該袋頁數" min="0" maxlength="3">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">件數</label>
-              <p class="control">
-                <input v-model="typeB['itemNum']" class="input" type="number" placeholder="件數" min="0" maxlength="4">
-              </p>
-            </div>
+      <div class="type-b" v-if="format === '2'">
+        <div class="columns">
+          <div class="column field">
+            <label class="label">袋序</label>
+            <p class="control">
+              <input v-model="typeB['packageOrder']" class="input" type="number" placeholder="袋序" min="0" maxlength="3">
+            </p>
           </div>
 
-          <div class="columns">
-            <div class="column field">
-              <label class="label">重量</label>
-              <p class="control">
-                <input v-model="typeB['weight']" class="input" type="number" placeholder="重量" min="0" step="0.1" maxlength="5">
-              </p>
-            </div>
+          <div class="column">
+            <label class="label">是否為最後一袋</label>
+            <p class="control">
+              <span class="select is-fullwidth">
+                <select v-model="typeB['isLastPackage']">
+                  <option value="0">否</option>
+                  <option value="0">是</option>
+                </select>
+              </span>
+            </p>
+          </div>
 
-            <div class="column field">
-              <label class="label">封發時間</label>
-              <p class="control">
-                <input v-model="typeB['mantleTime']" class="input" type="datetime" placeholder="封發時間">
-              </p>
-            </div>
+          <div class="column field">
+            <label class="label">該袋頁數</label>
+            <p class="control">
+              <input v-model="typeB['packagePages']" class="input" type="number" placeholder="該袋頁數" min="0" maxlength="3">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">件數</label>
+            <p class="control">
+              <input v-model="typeB['itemNum']" class="input" type="number" placeholder="件數" min="0" maxlength="4">
+            </p>
           </div>
         </div>
 
-      </transition>
+        <div class="columns">
+          <div class="column field">
+            <label class="label">重量</label>
+            <p class="control">
+              <input v-model="typeB['weight']" class="input" type="number" placeholder="重量" min="0" step="0.1" maxlength="5">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">封發時間</label>
+            <p class="control">
+              <input v-model="typeB['mantleTime']" class="input" type="datetime" placeholder="封發時間">
+            </p>
+          </div>
+        </div>
+      </div>
       <!-- B end -->
 
       <!-- C -->
-      <transition name="fade">
-        <div class="type-c" v-if="format === '3'">
-          <div class="columns">
-            <div class="column field">
-              <label class="label">袋序</label>
-              <p class="control">
-                <input v-model="typeC['packageOrder']" class="input" type="number" placeholder="袋序" min="0" maxlength="3">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">頁序</label>
-              <p class="control">
-                <input v-model="typeC['pageOrder']" class="input" type="number" placeholder="頁序" min="0" maxlength="3">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">格次</label>
-              <p class="control">
-                <input v-model="typeC['blankNum']" class="input" type="number" placeholder="格次" min="0" maxlength="3">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">郵件號碼</label>
-              <p class="control">
-                <input v-model="typeC['mailCode']" class="input" type="text" placeholder="郵件號碼" maxlength="13">
-              </p>
-            </div>
+      <div class="type-c" v-if="format === '3'">
+        <div class="columns">
+          <div class="column field">
+            <label class="label">袋序</label>
+            <p class="control">
+              <input v-model="typeC['packageOrder']" class="input" type="number" placeholder="袋序" min="0" maxlength="3">
+            </p>
           </div>
 
-          <div class="columns">
-            <div class="column field">
-              <label class="label">重量</label>
-              <p class="control">
-                <input v-model="typeC['weight']" class="input" type="number" placeholder="重量" min="0" step="0.01" maxlength="5">
-              </p>
-            </div>
+          <div class="column field">
+            <label class="label">頁序</label>
+            <p class="control">
+              <input v-model="typeC['pageOrder']" class="input" type="number" placeholder="頁序" min="0" maxlength="3">
+            </p>
+          </div>
 
-            <div class="column field">
-              <label class="label">封發時間</label>
-              <p class="control">
-                <input v-model="typeC['mantleTime']" class="input" type="datetime" placeholder="封發時間">
-              </p>
-            </div>
+          <div class="column field">
+            <label class="label">格次</label>
+            <p class="control">
+              <input v-model="typeC['blankNum']" class="input" type="number" placeholder="格次" min="0" maxlength="3">
+            </p>
+          </div>
 
-            <div class="column field">
-              <label class="label">省別</label>
-              <p class="control">
-                <input v-model="typeC['province']" class="input" type="text" placeholder="省別" maxlength="2">
-              </p>
-            </div>
-
-            <div class="column field">
-              <label class="label">箱別</label>
-              <p class="control">
-                <span class="select">
-                  <select v-model="typeC['box']">
-                    <option value="1">自由包</option>
-                    <option value="2">健康袋</option>
-                    <option value="3">商旅包</option>
-                  </select>
-                </span>
-              </p>
-            </div>
-
+          <div class="column field">
+            <label class="label">郵件號碼</label>
+            <p class="control">
+              <input v-model="typeC['mailCode']" class="input" type="text" placeholder="郵件號碼" maxlength="13">
+            </p>
           </div>
         </div>
-      </transition>
+
+        <div class="columns">
+          <div class="column field">
+            <label class="label">重量</label>
+            <p class="control">
+              <input v-model="typeC['weight']" class="input" type="number" placeholder="重量" min="0" step="0.01" maxlength="5">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">封發時間</label>
+            <p class="control">
+              <input v-model="typeC['mantleTime']" class="input" type="datetime" placeholder="封發時間">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">省別</label>
+            <p class="control">
+              <input v-model="typeC['province']" class="input" type="text" placeholder="省別" maxlength="2">
+            </p>
+          </div>
+
+          <div class="column field">
+            <label class="label">箱別</label>
+            <p class="control">
+              <span class="select is-fullwidth">
+                <select v-model="typeC['box']">
+                  <option value="1">自由包</option>
+                  <option value="2">健康袋</option>
+                  <option value="3">商旅包</option>
+                </select>
+              </span>
+            </p>
+          </div>
+
+        </div>
+      </div>
       <!-- C end -->
 
       <div class="columns">
@@ -279,6 +295,23 @@
           <a class="button is-primary add-button">新增</a>
         </div>
       </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th><abbr title="123">123</abbr></th>
+            <th><abbr title="">456</abbr></th>
+            <th><abbr title="">789</abbr></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11</td>
+            <td>22</td>
+            <td>33</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <!-- main end -->
   </div>
