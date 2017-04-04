@@ -298,12 +298,61 @@
 
       <!-- tables -->
 
-      <table class="table" v-if="format === 'A'">
+      <!-- a tables -->
+      <table class="table" v-if="showTable('A')">
         <thead>
           <tr>
-            <th><abbr title="123">123</abbr></th>
-            <th><abbr title="">456</abbr></th>
-            <th><abbr title="">789</abbr></th>
+            <th>提單號碼</th>
+            <th>去年最後總包</th>
+            <th>封發時間</th>
+            <th>總件數</th>
+            <th>總頁數</th>
+            <th>總袋數</th>
+            <th>總重量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>袋序</td>
+            <td>22</td>
+            <td>33</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- b tables -->
+      <table class="table" v-if="showTable('B')">
+        <thead>
+          <tr>
+            <th>袋序</th>
+            <th>是否為最後一袋</th>
+            <th>該袋頁數</th>
+            <th>件數</th>
+            <th>重量</th>
+            <th>封發時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11</td>
+            <td>22</td>
+            <td>33</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- c tables -->
+      <table class="table" v-if="showTable('C')">
+        <thead>
+          <tr>
+            <th>袋序</th>
+            <th>頁序</th>
+            <th>格次</th>
+            <th>郵件號碼</th>
+            <th>重量</th>
+            <th>封發時間</th>
+            <th>省別</th>
+            <th>箱別</th>
           </tr>
         </thead>
         <tbody>

@@ -11,11 +11,6 @@ var app = new Vue({
       { text: 'e-小包', value: 5 },
       { text: '速遞海運', value: 6 }
     ],
-    formats: [
-      { text: '總包資訊', value: 1 },
-      { text: '郵袋資訊', value: 2 },
-      { text: '郵件資訊', value: 3 }
-    ],
     basicPackages: [],
     aInfos: [],
     bInfos: [],
@@ -25,7 +20,7 @@ var app = new Vue({
     id: '',
     type: '',
     mantleTime: '',
-    format: '0',
+    format: '',
     year: '',
     countryCode: '',
     foce: 'FOCE',
@@ -59,20 +54,26 @@ var app = new Vue({
   methods: {
     initType: function() {
       this.format = '0'
+    },
+    showTable: function(tableType) {
+      switch(tableType) {
+        case 'A':
+        return this.aInfos.length ? true : false
+        break
+
+        case 'B':
+        return this.bInfos.length ? true : false
+        break
+
+        case 'C':
+        return this.cInfos.length ? true : false
+        break
+      }
     }
   },
   computed: {
     filename: function() {
       return this.source + this.id + this.mantleTime + this.type
-    },
-    needAtable: function() {
-      return this.aInfos.length ? true : false
-    },
-    needBtable: function() {
-      return this.bInfos.length ? true : false
-    },
-    needCtable: function() {
-      return this.cInfos.length ? true : false
     }
   },
   mounted: function () {
