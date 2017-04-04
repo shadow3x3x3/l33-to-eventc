@@ -124,13 +124,6 @@
               <input v-model="typeA['lastPackage']" class="input" type="text" placeholder="去年最後總包" maxlength="4">
             </p>
           </div>
-
-          <div class="column field">
-            <label class="label">封發時間</label>
-            <p class="control">
-              <input v-model="typeA['mantleTime']" class="input" type="datetime" placeholder="封發時間">
-            </p>
-          </div>
         </div>
 
         <div class="columns">
@@ -193,27 +186,20 @@
               <input v-model="typeB['packagePages']" class="input" type="number" placeholder="該袋頁數" min="0" maxlength="3">
             </p>
           </div>
+        </div>
 
+        <div class="columns">
           <div class="column field">
             <label class="label">件數</label>
             <p class="control">
               <input v-model="typeB['itemNum']" class="input" type="number" placeholder="件數" min="0" maxlength="4">
             </p>
           </div>
-        </div>
 
-        <div class="columns">
           <div class="column field">
             <label class="label">重量</label>
             <p class="control">
               <input v-model="typeB['weight']" class="input" type="number" placeholder="重量" min="0" step="0.1" maxlength="5">
-            </p>
-          </div>
-
-          <div class="column field">
-            <label class="label">封發時間</label>
-            <p class="control">
-              <input v-model="typeB['mantleTime']" class="input" type="datetime" placeholder="封發時間">
             </p>
           </div>
         </div>
@@ -257,13 +243,6 @@
             <label class="label">重量</label>
             <p class="control">
               <input v-model="typeC['weight']" class="input" type="number" placeholder="重量" min="0" step="0.01" maxlength="5">
-            </p>
-          </div>
-
-          <div class="column field">
-            <label class="label">封發時間</label>
-            <p class="control">
-              <input v-model="typeC['mantleTime']" class="input" type="datetime" placeholder="封發時間">
             </p>
           </div>
 
