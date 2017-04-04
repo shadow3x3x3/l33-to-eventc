@@ -67,9 +67,9 @@
           <p class="control">
             <span class="select is-fullwidth">
               <select v-model="format">
-                <option value="1">總包資訊</option>
-                <option value="2">郵袋資訊</option>
-                <option value="3" v-if="type !== 3">郵件資訊</option>
+                <option value="A">總包資訊</option>
+                <option value="B">郵袋資訊</option>
+                <option value="C" v-if="type !== 3">郵件資訊</option>
               </select>
             </span>
           </p>
@@ -108,7 +108,7 @@
       <!-- Basic end -->
 
       <!-- A -->
-      <div class="type-a" v-if="format === '1'">
+      <div class="type-a" v-if="format === 'A'">
         <div class="columns">
           <div class="column field">
             <label class="label">提單號碼</label>
@@ -165,7 +165,7 @@
       <!-- A end -->
 
       <!-- B -->
-      <div class="type-b" v-if="format === '2'">
+      <div class="type-b" v-if="format === 'B'">
         <div class="columns">
           <div class="column field">
             <label class="label">袋序</label>
@@ -220,7 +220,7 @@
       <!-- B end -->
 
       <!-- C -->
-      <div class="type-c" v-if="format === '3'">
+      <div class="type-c" v-if="format === 'C'">
         <div class="columns">
           <div class="column field">
             <label class="label">袋序</label>
@@ -296,7 +296,9 @@
         </div>
       </div>
 
-      <table class="table">
+      <!-- tables -->
+
+      <table class="table" v-if="format === 'A'">
         <thead>
           <tr>
             <th><abbr title="123">123</abbr></th>
