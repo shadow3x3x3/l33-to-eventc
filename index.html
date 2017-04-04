@@ -292,10 +292,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>袋序</td>
-            <td>22</td>
-            <td>33</td>
+          <tr v-for="aInfo in aInfos">
+            <td>{{ aInfo['billCode'] }}</td>
+            <td>{{ aInfo['lastPackage'] }}</td>
+            <td>{{ mantleTime }}</td>
+            <td>{{ aInfo['itemNum'] }}</td>
+            <td>{{ aInfo['pageNum'] }}</td>
+            <td>{{ aInfo['packageNum'] }}</td>
+            <td>{{ aInfo['totalWeight'] }}</td>
           </tr>
         </tbody>
       </table>
@@ -313,10 +317,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>11</td>
-            <td>22</td>
-            <td>33</td>
+          <tr v-for="bInfo in bInfos">
+            <td>{{ bInfo['packageOrder'] }}</td>
+            <td>{{ bInfo['isLastPackage'] }}</td>
+            <td>{{ bInfo['packagePages'] }}</td>
+            <td>{{ bInfo['itemNum'] }}</td>
+            <td>{{ bInfo['weight'] }}</td>
+            <td>{{ mantleTime }}</td>
           </tr>
         </tbody>
       </table>
@@ -336,10 +343,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>11</td>
-            <td>22</td>
-            <td>33</td>
+          <tr v-for="cInfo in cInfos">
+            <td>{{ cInfo['packageOrder'] }}</td>
+            <td>{{ cInfo['pageOrder'] }}</td>
+            <td>{{ cInfo['blankNum'] }}</td>
+            <td>{{ cInfo['mailCode'] }}</td>
+            <td>{{ cInfo['weight'] }}</td>
+            <td>{{ mantleTime }}</td>
+            <td>{{ cInfo['province'] }}</td>
+            <td>{{ cInfo['box'] }}</td>
           </tr>
         </tbody>
       </table>
