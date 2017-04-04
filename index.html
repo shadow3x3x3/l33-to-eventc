@@ -279,82 +279,91 @@
       <!-- tables -->
 
       <!-- a tables -->
-      <table class="table" v-if="showTable('A')">
-        <thead>
-          <tr>
-            <th>提單號碼</th>
-            <th>去年最後總包</th>
-            <th>封發時間</th>
-            <th>總件數</th>
-            <th>總頁數</th>
-            <th>總袋數</th>
-            <th>總重量</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="aInfo in aInfos">
-            <td>{{ aInfo['billCode'] }}</td>
-            <td>{{ aInfo['lastPackage'] }}</td>
-            <td>{{ mantleTime }}</td>
-            <td>{{ aInfo['itemNum'] }}</td>
-            <td>{{ aInfo['pageNum'] }}</td>
-            <td>{{ aInfo['packageNum'] }}</td>
-            <td>{{ aInfo['totalWeight'] }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="a-table" v-if="showTable('A')">
+        <h3>Type A</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>提單號碼</th>
+              <th>去年最後總包</th>
+              <th>封發時間</th>
+              <th>總件數</th>
+              <th>總頁數</th>
+              <th>總袋數</th>
+              <th>總重量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="aInfo in aInfos">
+              <td>{{ aInfo['billCode'] }}</td>
+              <td>{{ aInfo['lastPackage'] }}</td>
+              <td>{{ mantleTime }}</td>
+              <td>{{ aInfo['itemNum'] }}</td>
+              <td>{{ aInfo['pageNum'] }}</td>
+              <td>{{ aInfo['packageNum'] }}</td>
+              <td>{{ aInfo['totalWeight'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- b tables -->
-      <table class="table" v-if="showTable('B')">
-        <thead>
-          <tr>
-            <th>袋序</th>
-            <th>是否為最後一袋</th>
-            <th>該袋頁數</th>
-            <th>件數</th>
-            <th>重量</th>
-            <th>封發時間</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="bInfo in bInfos">
-            <td>{{ bInfo['packageOrder'] }}</td>
-            <td>{{ bInfo['isLastPackage'] }}</td>
-            <td>{{ bInfo['packagePages'] }}</td>
-            <td>{{ bInfo['itemNum'] }}</td>
-            <td>{{ bInfo['weight'] }}</td>
-            <td>{{ mantleTime }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="b-table" v-if="showTable('B')">
+        <h3>Type B</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>袋序</th>
+              <th>是否為最後一袋</th>
+              <th>該袋頁數</th>
+              <th>件數</th>
+              <th>重量</th>
+              <th>封發時間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="bInfo in bInfos">
+              <td>{{ bInfo['packageOrder'] }}</td>
+              <td>{{ bInfo['isLastPackage'] }}</td>
+              <td>{{ bInfo['packagePages'] }}</td>
+              <td>{{ bInfo['itemNum'] }}</td>
+              <td>{{ bInfo['weight'] }}</td>
+              <td>{{ mantleTime }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- c tables -->
-      <table class="table" v-if="showTable('C')">
-        <thead>
-          <tr>
-            <th>袋序</th>
-            <th>頁序</th>
-            <th>格次</th>
-            <th>郵件號碼</th>
-            <th>重量</th>
-            <th>封發時間</th>
-            <th>省別</th>
-            <th>箱別</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="cInfo in cInfos">
-            <td>{{ cInfo['packageOrder'] }}</td>
-            <td>{{ cInfo['pageOrder'] }}</td>
-            <td>{{ cInfo['blankNum'] }}</td>
-            <td>{{ cInfo['mailCode'] }}</td>
-            <td>{{ cInfo['weight'] }}</td>
-            <td>{{ mantleTime }}</td>
-            <td>{{ cInfo['province'] }}</td>
-            <td>{{ cInfo['box'] }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="c-table" v-if="showTable('C')">
+        <h3>Type C</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>袋序</th>
+              <th>頁序</th>
+              <th>格次</th>
+              <th>郵件號碼</th>
+              <th>重量</th>
+              <th>封發時間</th>
+              <th>省別</th>
+              <th>箱別</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="cInfo in cInfos">
+              <td>{{ cInfo['packageOrder'] }}</td>
+              <td>{{ cInfo['pageOrder'] }}</td>
+              <td>{{ cInfo['blankNum'] }}</td>
+              <td>{{ cInfo['mailCode'] }}</td>
+              <td>{{ cInfo['weight'] }}</td>
+              <td>{{ mantleTime }}</td>
+              <td>{{ cInfo['province'] }}</td>
+              <td>{{ cInfo['box'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- main end -->
   </div>
