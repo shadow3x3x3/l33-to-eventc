@@ -16,7 +16,10 @@ var app = new Vue({
       { text: '郵袋資訊', value: 2 },
       { text: '郵件資訊', value: 3 }
     ],
-    packages: [],
+    basicPackages: [],
+    aInfos: [],
+    bInfos: [],
+    cInfos: [],
     // single package info
     source: '',
     id: '',
@@ -61,6 +64,15 @@ var app = new Vue({
   computed: {
     filename: function() {
       return this.source + this.id + this.mantleTime + this.type
+    },
+    needAtable: function() {
+      return this.aInfos.length ? true : false
+    },
+    needBtable: function() {
+      return this.bInfos.length ? true : false
+    },
+    needCtable: function() {
+      return this.cInfos.length ? true : false
     }
   },
   mounted: function () {
