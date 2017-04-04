@@ -69,6 +69,21 @@ var app = new Vue({
         return this.cInfos.length ? true : false
         break
       }
+    },
+    add: function(format) {
+      switch(format) {
+        case 'A':
+        this.aInfos.push(_.cloneDeep(this.typeA))
+        break
+
+        case 'B':
+        this.bInfos.push(_.cloneDeep(this.typeB))
+        break
+
+        case 'C':
+        this.cInfos.push(_.cloneDeep(this.typeC))
+        break
+      }
     }
   },
   computed: {

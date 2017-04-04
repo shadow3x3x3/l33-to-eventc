@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="src/index.css">
   <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
   <script src="https://unpkg.com/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 
@@ -292,7 +293,7 @@
 
       <div class="columns">
         <div class="column is-half is-offset-one-quarter">
-          <a class="button is-primary add-button">新增</a>
+          <a class="button is-primary add-button" @click="add(format)">新增</a>
         </div>
       </div>
 
