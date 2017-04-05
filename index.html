@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
   <link rel="stylesheet" href="src/index.css">
   <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://unpkg.com/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -302,6 +303,13 @@
               <td>{{ aInfo['pageNum'] }}</td>
               <td>{{ aInfo['packageNum'] }}</td>
               <td>{{ aInfo['totalWeight'] }}</td>
+              <td>
+                <a class="button">
+                  <span class="icon is-small">
+                    <i class="fa fa-trash-o"></i>
+                  </span>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -329,6 +337,13 @@
               <td>{{ bInfo['itemNum'] }}</td>
               <td>{{ bInfo['weight'] }}</td>
               <td>{{ bInfo['mantleTime'] }}</td>
+              <td>
+                <a class="button">
+                  <span class="icon is-small">
+                    <i class="fa fa-trash-o"></i>
+                  </span>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -360,6 +375,13 @@
               <td>{{  cInfo['mantleTime'] }}</td>
               <td>{{ cInfo['province'] }}</td>
               <td>{{ cInfo['box'] }}</td>
+              <td>
+                <a class="button">
+                  <span class="icon is-small">
+                    <i class="fa fa-trash-o"></i>
+                  </span>
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
