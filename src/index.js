@@ -98,6 +98,9 @@ var app = new Vue({
     },
     deleteC: function(index) {
       this.cInfos.splice(index, 1)
+    },
+    exportFile: function() {
+      download("// TODO centent", this.filename + ".txt", "text/plain");
     }
   },
   computed: {
