@@ -1,5 +1,8 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
 body {
   color: #666;
+  font-family: "Noto Sans", "Noto Sans CJK TC", sans-serif;
 }
 
 .header {
@@ -15,6 +18,7 @@ body {
 
 select {
   padding-top: 4px !important;
+  font-family: "Noto Sans", "Noto Sans CJK TC", sans-serif;
 }
 
 .add-button {
