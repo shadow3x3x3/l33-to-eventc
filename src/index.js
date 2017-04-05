@@ -89,6 +89,15 @@ var app = new Vue({
         this.cInfos.push(_.cloneDeep(this.typeC))
         break
       }
+    },
+    deleteA: function(index) {
+      this.aInfos.splice(index, 1)
+    },
+    deleteB: function(index) {
+      this.bInfos.splice(index, 1)
+    },
+    deleteC: function(index) {
+      this.cInfos.splice(index, 1)
     }
   },
   computed: {

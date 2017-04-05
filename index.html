@@ -295,7 +295,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="aInfo in aInfos">
+            <tr v-for="(aInfo, index) in aInfos">
               <td>{{ aInfo['billCode'] }}</td>
               <td>{{ aInfo['lastPackage'] }}</td>
               <td>{{ aInfo['mantleTime'] }}</td>
@@ -304,7 +304,7 @@
               <td>{{ aInfo['packageNum'] }}</td>
               <td>{{ aInfo['totalWeight'] }}</td>
               <td>
-                <a class="button">
+                <a class="button" @click="deleteA(index)">
                   <span class="icon is-small">
                     <i class="fa fa-trash-o"></i>
                   </span>
@@ -330,7 +330,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="bInfo in bInfos">
+            <tr v-for="(bInfo, index) in bInfos">
               <td>{{ bInfo['packageOrder'] }}</td>
               <td>{{ bInfo['isLastPackage'] }}</td>
               <td>{{ bInfo['packagePages'] }}</td>
@@ -338,7 +338,7 @@
               <td>{{ bInfo['weight'] }}</td>
               <td>{{ bInfo['mantleTime'] }}</td>
               <td>
-                <a class="button">
+                <a class="button" @click="deleteB(index)">
                   <span class="icon is-small">
                     <i class="fa fa-trash-o"></i>
                   </span>
@@ -366,7 +366,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="cInfo in cInfos">
+            <tr v-for="(cInfo, index) in cInfos">
               <td>{{ cInfo['packageOrder'] }}</td>
               <td>{{ cInfo['pageOrder'] }}</td>
               <td>{{ cInfo['blankNum'] }}</td>
@@ -376,7 +376,7 @@
               <td>{{ cInfo['province'] }}</td>
               <td>{{ cInfo['box'] }}</td>
               <td>
-                <a class="button">
+                <a class="button" @click="deleteC(index)">
                   <span class="icon is-small">
                     <i class="fa fa-trash-o"></i>
                   </span>
