@@ -31,7 +31,8 @@ var app = new Vue({
       itemNum: '',
       pageNum: '',
       packageNum: '',
-      totalWeight: ''
+      totalWeight: '',
+      mantleTime: ''
     },
     typeB: {
       packageOrder: '',
@@ -48,7 +49,8 @@ var app = new Vue({
       mailCode: '',
       weight: '',
       province: '',
-      box: '1'
+      box: '1',
+      mantleTime: ''
     }
   },
   methods: {
@@ -73,14 +75,17 @@ var app = new Vue({
     add: function(format) {
       switch(format) {
         case 'A':
+        this.typeA['mantleTime'] = this.mantleTime
         this.aInfos.push(_.cloneDeep(this.typeA))
         break
 
         case 'B':
+        this.typeB['mantleTime'] = this.mantleTime
         this.bInfos.push(_.cloneDeep(this.typeB))
         break
 
         case 'C':
+        this.typeC['mantleTime'] = this.mantleTime
         this.cInfos.push(_.cloneDeep(this.typeC))
         break
       }

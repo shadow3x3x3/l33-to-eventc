@@ -297,7 +297,7 @@
             <tr v-for="aInfo in aInfos">
               <td>{{ aInfo['billCode'] }}</td>
               <td>{{ aInfo['lastPackage'] }}</td>
-              <td>{{ mantleTime }}</td>
+              <td>{{ aInfo['mantleTime'] }}</td>
               <td>{{ aInfo['itemNum'] }}</td>
               <td>{{ aInfo['pageNum'] }}</td>
               <td>{{ aInfo['packageNum'] }}</td>
@@ -328,7 +328,7 @@
               <td>{{ bInfo['packagePages'] }}</td>
               <td>{{ bInfo['itemNum'] }}</td>
               <td>{{ bInfo['weight'] }}</td>
-              <td>{{ mantleTime }}</td>
+              <td>{{ bInfo['mantleTime'] }}</td>
             </tr>
           </tbody>
         </table>
@@ -357,7 +357,7 @@
               <td>{{ cInfo['blankNum'] }}</td>
               <td>{{ cInfo['mailCode'] }}</td>
               <td>{{ cInfo['weight'] }}</td>
-              <td>{{ mantleTime }}</td>
+              <td>{{  cInfo['mantleTime'] }}</td>
               <td>{{ cInfo['province'] }}</td>
               <td>{{ cInfo['box'] }}</td>
             </tr>
