@@ -105,7 +105,7 @@ var app = new Vue({
       return this.source + this.id + this.mantleTime + this.type
     }
   },
-  mounted: function () {
+  mounted: function() {
     flatpickr('.flatpickr', {
       dateFormat: 'YmdHi',
       enableTime: true,
